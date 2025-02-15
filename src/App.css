@@ -1,141 +1,64 @@
-/* 🌟 Global Styles for a Modern Look 🌟 */
+/* 🌟 Fix Background & Centering 🌟 */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Lora:wght@400;600&display=swap');
+
 body {
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Lora', serif; /* Modern, clean, and readable */
   margin: 0;
   padding: 0;
   background: linear-gradient(135deg, #6e8efb, #a777e3);
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100%;
-  color: #333;
-}
-
-/* 📦 Main Container */
-.survey-container {
-  background-color: #fff;
-  width: 600px;
-  padding: 25px;
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-  border-radius: 12px;
-  text-align: center;
-}
-
-/* 📊 Progress Bar */
-.progress-container {
-  height: 12px;
-  background-color: #e0e0e0;
-  border-radius: 6px;
-  margin-bottom: 20px;
-  overflow: hidden;
-}
-
-.progress-bar {
-  height: 100%;
-  background: linear-gradient(90deg, #4caf50, #45a049);
-  border-radius: 6px;
-  transition: width 0.3s ease-in-out;
-}
-
-/* ❓ Question Styling */
-.question-container h2 {
-  font-size: 22px;
-  margin-bottom: 15px;
-  color: #333;
-}
-
-/* ✏️ Input Fields */
-input[type="text"] {
-  width: 100%;
-  padding: 12px;
-  font-size: 16px;
-  border: 2px solid #ccc;
-  border-radius: 6px;
-  margin-bottom: 20px;
-  transition: border-color 0.3s;
-}
-
-input[type="text"]:focus {
-  border-color: #6e8efb;
-  outline: none;
-}
-
-input[type="radio"] {
-  margin-right: 10px;
-  transform: scale(1.2);
-}
-
-/* 🎨 Button Styling */
-button {
-  background: linear-gradient(135deg, #4caf50, #2e7d32);
-  color: white;
-  padding: 12px 24px;
-  border: none;
-  border-radius: 8px;
-  font-size: 18px;
-  cursor: pointer;
-  transition: all 0.3s ease-in-out;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-}
-
-button:disabled {
-  background: #ccc;
-  cursor: not-allowed;
-}
-
-button:hover {
-  background: linear-gradient(135deg, #45a049, #1b5e20);
-  transform: scale(1.05);
+  min-height: 100vh;
+  width: 100vw;
+  overflow-x: hidden; /* Prevents side scroll */
+  font-weight: 400; /* Balanced font weight for better readability */
+  line-height: 1.6; /* Increases readability */
 }
 
 /* 🔥 Root Container */
 #root {
-  max-width: 1280px;
+  max-width: 100%;
   margin: 0 auto;
-  padding: 2rem;
+  padding: 0rem;
   text-align: center;
 }
 
-/* 🌟 Logo Styling */
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
+/* ✨ Headings with Lora for elegance */
+h1, h2, h3 {
+  font-family: 'Lora', serif;
+  font-weight: 600;
 }
 
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
+/* 📜 Paragraphs - Use Inter */
+p {
+  font-family: 'Lora', serif;
+  font-weight: 400;
+  font-size: 1.1rem;
 }
 
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
-}
-
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
-}
-
-/* 📜 Card Styling */
-.card {
-  padding: 2em;
-  background: rgba(255, 255, 255, 0.2);
+.footer {
+  text-align: center;
+  font-size: 14px;
+  width: 100%;
+  position: absolute;  /* Change from fixed to absolute */
+  bottom: 0;
+  margin-bottom: 10px;
+  left: 0;
   backdrop-filter: blur(10px);
-  border-radius: 10px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
-.read-the-docs {
-  color: #888;
+/* 🚀 Special Styling for Results Page */
+.results-page {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* Ensures full height */
+}
+
+.results-footer {
+  margin-top: auto; /* Pushes footer to the very bottom */
+  position: relative;
+  color: black; /* Darker text for better visibility */
+  font-size: 14px;
+  text-align: center;
 }

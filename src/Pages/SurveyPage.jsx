@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 import SurveyQuestion from "../components/SurveyQuestion";
@@ -34,15 +35,18 @@ const SurveyPage = () => {
 
   const [answers, setAnswers] = useState([]);
   const [loading, setLoading] = useState(false); // Track loading state
+  const [animateDirection, setAnimateDirection] = useState(1);
+
   const questionIndex = parseInt(id, 10) - 1; // zero-based
 
   const setAnswer = (answer, questionId) => {
     setAnswers((prevAnswers) => {
       const newAnswers = [...prevAnswers];
       newAnswers[questionId - 1] = answer;
+      console.log("Updated Answers:", newAnswers);
       return newAnswers;
     });
-  };
+  };  
 
   const handleFinishSurvey = async () => {
     try {
@@ -55,7 +59,7 @@ const SurveyPage = () => {
             {
               parts: [
                 {
-                  text: `Based on these answers, create a well-structured, professional workout training plan in plain text: ${JSON.stringify(answers)}
+                  text: `Based on these answers: ${JSON.stringify(answers)} to these questions: ${JSON.stringify(questions)}, create a well-structured, professional workout training plan in plain text:
                   **Formatting Requirements**:
                   1. **No Asterisks**. Do not use "*" or "**" for bullets or bold text.
                   2. **Headings**: Use a line starting with "#" (or "##", etc.) for each major section. For example:
@@ -64,7 +68,8 @@ const SurveyPage = () => {
                      Goal: Build Muscle
                   4. **Line-by-Line Output**: Place each item on its own line, separated by newlines. For sub-points or clarifications, you can indent with two spaces or add an extra dash.
                   6. **No MarkDown or HTML**: Avoid code fences or HTML tags. Just plain text lines.
-                  Please follow these instructions carefully so the result can be easily parsed by our application. Provide a concise but comprehensive training plan, with headings, bullet points, and key-value lines as requested.`
+                  Please follow these instructions carefully so the result can be easily parsed by our application. Provide a concise but comprehensive training plan, with headings, bullet points, and key-value lines as requested.
+                  7. Bigger text for days of the week to be able to easier distinguish it from exercises under them`
                 }
               ]
             }
@@ -93,6 +98,9 @@ const SurveyPage = () => {
 
   const handleNextQuestion = (currentQuestionId) => {
     if (currentQuestionId < questions.length) {
+      if (currentQuestionId !== 1){
+        setAnimateDirection(1);
+      }
       navigate(`/survey/q/${currentQuestionId + 1}`);
     } else {
       handleFinishSurvey();
@@ -105,17 +113,27 @@ const SurveyPage = () => {
   }
 
   return (
-    <div>
-      {questionIndex >= 0 && questionIndex < questions.length ? (
-        <SurveyQuestion
-          question={questions[questionIndex]}
-          questionId={questionIndex + 1}
-          setAnswer={setAnswer}
-          handleNextQuestion={handleNextQuestion}
-        />
-      ) : (
-        <p>Question not found.</p>
-      )}
+    <div className="survey-wrapper">
+      <AnimatePresence mode="wait">
+        {questionIndex >= 0 && questionIndex < questions.length ? (
+          <motion.div
+            key={questionIndex}
+            initial={{ opacity: 0, x: animateDirection * 50 }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: animateDirection * -50 }}
+            transition={{ duration: 0.4, ease: "easeInOut" }}
+          >
+            <SurveyQuestion
+              question={questions[questionIndex]}
+              questionId={questionIndex + 1}
+              setAnswer={setAnswer}
+              handleNextQuestion={handleNextQuestion}
+            />
+          </motion.div>
+        ) : (
+          <p>Question not found.</p>
+        )}
+      </AnimatePresence>
     </div>
   );
 };

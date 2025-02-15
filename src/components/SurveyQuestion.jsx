@@ -79,7 +79,7 @@ const SurveyQuestion = ({ question, questionId, setAnswer, handleNextQuestion })
           <input
             type="range"
             className="slider-input"
-            min={12}
+            min={5}
             max={50}
             value={sliderValue}
             onChange={handleSliderChange}
@@ -87,8 +87,13 @@ const SurveyQuestion = ({ question, questionId, setAnswer, handleNextQuestion })
           <span className="slider-value">{sliderValue} {question.unit}</span>
         </div>
       )}
-      <button className="next-btn" onClick={handleNext} disabled={isNextBtnDisabled}>
+      <button 
+        className="next-btn tooltip" 
+        onClick={handleNext} 
+        disabled={isNextBtnDisabled}
+      >
         Next question
+        {isNextBtnDisabled && <span className="tooltip-text">Please answer the question to continue</span>}
       </button>
     </div>
   );
