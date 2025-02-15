@@ -1,0 +1,108 @@
+/* 🌟 Global Styles for a Modern Look 🌟 */
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(135deg, #6e8efb, #a777e3);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    color: #333;
+}
+
+/* 📦 Main Survey Question Container */
+.survey-question-container {
+    background-color: #fff;
+    width: 600px;
+    padding: 25px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    border-radius: 12px;
+    text-align: center;
+}
+
+/* ❓ Question Text */
+.question-text {
+    font-size: 22px;
+    margin-bottom: 20px;
+    color: #333;
+    text-align: center;
+}
+
+/* 📋 Checkbox Input */
+.checkbox-input {
+    margin-right: 10px;
+    transform: scale(1.2);
+}
+
+.option-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    font-size: 16px;
+}
+
+.option-text {
+    font-size: 16px;
+    margin-left: 10px;
+}
+
+/* ✏️ Text Input */
+.text-input {
+    width: 100%;
+    padding: 12px;
+    font-size: 16px;
+    border: 2px solid #ccc;
+    border-radius: 6px;
+    margin-bottom: 20px;
+    box-sizing: border-box; /* Ensures padding is included in the width */
+    transition: border-color 0.3s;
+    cursor: text; /* Ensures the pointer appears as a text cursor */
+}
+
+.text-input:focus {
+    border-color: #6e8efb;
+    outline: none;
+}
+
+/* 🎚 Slider Input */
+.slider-container {
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.slider-input {
+    width: 100%;
+    height: 10px;
+    background: #e0e0e0;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+.slider-value {
+    font-size: 16px;
+    font-weight: bold;
+}
+
+/* 🎨 Button Styling */
+.next-btn {
+    background: linear-gradient(135deg, #4caf50, #2e7d32);
+    color: white;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 20px;
+    font-size: 18px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.next-btn:disabled {
+    background: #ccc;
+    cursor: not-allowed;
+}
+
+.next-btn:hover {
+    background: linear-gradient(135deg, #45a049, #1b5e20);
+    transform: scale(1.05);
+}
