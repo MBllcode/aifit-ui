@@ -36,7 +36,7 @@ const SurveyStart = () => {
     >
       <div className="survey-content">
         <h1>
-          Welcome to Our <span>Personal Training Plan Generator</span>
+          Welcome to <span>Workout Training Plan Generator</span>
         </h1>
         <p>
           Powered by <strong style={{ color: "rgb(71, 96, 185)" }}>Gemini AI 🤖</strong>
